@@ -4,26 +4,22 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class JPanelGrafico extends JPanel {
-
-	private Punto punto;
+	private double[] arrX;
 
 	public JPanelGrafico() {
-		this.punto = new Punto(0, 0);
+		this.arrX = new double[19];
+		for (int i = 0; i < arrX.length; i++) {
+			arrX[i] = i;
+		}
 	}
 
+	// in another graphics frameworks this method works like update().
 	public void paintComponent(Graphics g) {
-		int y = (int) (punto.getY() * 100);
-//		for (int i = 10; i < 100; i = i + 10) {
-//			g.fillOval(i, y + 200 - i, 10, 10);
-//		}
-		g.fillOval(10, y + 200, 10, 10);
-	}	
-
-	public Punto getPunto() {
-		return punto;
+	
+		for (int i = 0; i < arrX.length; i++) {
+			g.fillOval(i * 40, (int)(Math.sin(arrX[i]) * 100) + getHeight()/2, 10, 10);
+			arrX[i] = arrX[i] + 0.09;
+		}
 	}
 
-	public void setPunto(Punto punto) {
-		this.punto = punto;
-	}
 }

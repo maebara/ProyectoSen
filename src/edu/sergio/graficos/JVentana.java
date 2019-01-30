@@ -9,7 +9,6 @@ import javax.swing.WindowConstants;
 
 public class JVentana extends JFrame{
 	private JPanelGrafico panelGrafico;
-	private double x;
 	
 	public JVentana() {
 		super();
@@ -19,29 +18,21 @@ public class JVentana extends JFrame{
 		setResizable(false);
 		panelGrafico = new JPanelGrafico();
 		setContentPane(panelGrafico);
-		setBackground(Color.WHITE);
-		x = 0;		
+		setBackground(Color.WHITE);	
 	}
 		
 	public void iniciarAnimacion() {
 		Timer timer = new Timer(17, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				update();
+				repaint();
 			}
 		});
 		
 		timer.start();
 	}
 
-	private void update() {
-		double senX = Math.sin(this.x);
-		Punto p = panelGrafico.getPunto();
-		p.setX(x);
-		p.setY(senX);
-		x = x + 0.09;
-		repaint();
-	}
+	
 
 	public static void main(String[] args) {
 		JVentana ventana = new JVentana();
