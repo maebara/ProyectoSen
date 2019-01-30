@@ -31,12 +31,4 @@ public class JVentana extends JFrame{
 		
 		timer.start();
 	}
-
-	
-
-	public static void main(String[] args) {
-		JVentana ventana = new JVentana();
-		ventana.setVisible(true);
-		ventana.iniciarAnimacion();
-	}
 }
