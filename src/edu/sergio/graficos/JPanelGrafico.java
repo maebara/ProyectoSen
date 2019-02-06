@@ -6,25 +6,26 @@ import javax.swing.JPanel;
 public class JPanelGrafico extends JPanel {
 	private double[] arrX;
 	private double amplitud;
+	private double incrementoX;
+	private int periodo;
 	
 	public JPanelGrafico() {
+		incrementoX = 0.1;
+		amplitud = 100;
+		periodo = 15;
+		
 		this.arrX = new double[40];
-		double val = 0.1;
+		double val = incrementoX;
 		for (int i = 0; i < arrX.length; i++) {
 			arrX[i] = val;
-			val = val + 0.1;
-		}
-		amplitud = 100;
+			val = val + incrementoX;
+		}	
 	}
 
-	// in another graphics frameworks this method works like update().
 	public void paintComponent(Graphics g) {
-		
 		for (int i = 0; i < arrX.length; i++) {
-			g.fillOval(i * 14, (int)(Math.sin(arrX[i]) * amplitud) + getHeight()/2, 10, 10);
-			arrX[i] = arrX[i] + 0.1;
+			g.fillOval(i * periodo, (int)(Math.sin(arrX[i]) * amplitud) + getHeight()/2, 10, 10);
+			arrX[i] = arrX[i] + incrementoX;
 		}
-		
 	}
-
 }
